@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: gateway # 网关层
+  main:
+    web-application-type: reactive
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: 192.168.182.100:8848 # 服务的注册

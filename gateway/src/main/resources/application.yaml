@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    allow-circular-references: true # 允许循环依赖
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url:
+      username:
+      password:
+
+logging:
+  level:
+    com:
+      sky:
+        mapper: debug
+        service: info
+        controller: info
+sky:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: xieVictory
+    # 设置jwt过期时间
+    admin-ttl: 36000000 #10 hour
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+    user-secret-key: xieVictory
+    user-ttl: 36000000 #10 hour
+    user-token-name: authentication
+  auth:
+    excludePaths:
+      - /user/user/login
+      - /admin/employee/login
+      - /admin/employee/logout
+      - /user/shop/status
+      - /ws/**
+  alioss:
+    endpoint: ${sky.alioss.endpoint}
+    access-key-id: ${sky.alioss.access-key-id}
+    access-key-secret: ${sky.alioss.access-key-secret}
+    bucket-name: ${sky.alioss.bucket-name}
+
